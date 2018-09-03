@@ -1,0 +1,10 @@
+h1{
+    color: #FCA205;
+}
+
+#map{
+    height:400px;
+    width:100%;
+    margin-top:100px;
+    margin-right:50px;
+}

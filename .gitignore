@@ -1,0 +1,10 @@
+*.pyc
+*~
+**/__pycache__
+**/myenv
+**/venv
+db.sqlite3
+/static
+.DS_Store
+.idea/workspace.xml
+
