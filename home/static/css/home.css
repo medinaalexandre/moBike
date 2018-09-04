@@ -5,9 +5,20 @@ h1 {
     text-align: center;
 }
 
+.btn {
+	margin-top: 10px;
+}
+
+.nav {
+    margin-top: 20px;
+}
+
+.nav-link {
+	padding: 15px;
+}
+
 .form {
-    margin-left: 20px;
-  	resize: horizontal;
+    margin-left: 50px;
 }
 
 textarea {
