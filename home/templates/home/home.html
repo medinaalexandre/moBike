@@ -2,7 +2,7 @@
 
 <html lang="pt-br">
     <head>
-        <title>Lista de entregas</title>
+        <title>moBike</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta charset="UTF-8">
         <!-- css files -->
@@ -15,14 +15,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h1> Mapa de entregas </h1>
-                    <h1>Nova Entrega</h1>
-                    <form method="POST" class="nova-entrega-form">{% csrf_token %}
+                    <form method="POST" class="form nova-entrega-form">{% csrf_token %}
+                        <h1>Nova Entrega</h1>
                         {{ form.as_p }}
-                        <button type="submit" class="save btn btn-default">Save</button>
+                        <button type="submit" class="save btn btn-outline-dark">Criar entrega</button>
                     </form>
                 </div>
                 <div class="col-md-6">
+                    <h1>Mapa de Entregas</h1>
                     <div id="map"></div>
                 </div>
             </div>
