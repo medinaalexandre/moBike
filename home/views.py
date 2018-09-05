@@ -5,6 +5,11 @@ from django.shortcuts import redirect
 
 # Create your views here.
 
+def entrega(request):
+    entregasAtivas = EntregaAtiva.objects.all()
+    return render(request, 'home/entregas.html', {'entregasAtivas': entregasAtivas})
+
+
 def home(request):
     entregasAtivas = EntregaAtiva.objects.all()
     if request.method == "POST":

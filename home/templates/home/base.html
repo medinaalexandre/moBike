@@ -20,38 +20,21 @@
          <div class="row">
           <div class="col-md-2 bg-light">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
+              <a class="nav-link active" href="../" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
-              <a class="nav-link" href="/entregas"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
-              <a class="nav-link" href="#" role="tab" aria-controls="v-pills-login" aria-selected="false">Login</a>
+              <a class="nav-link" href="/entregas" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
+              <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
             </div>
           </div>
-          <div class="row"></div>
-                <div class="col-md-5">
-                    <form method="POST">
-                        <h1>Nova Entrega</h1>
-                        {% csrf_token %}
-                        {% form %}
-                        {% part form.ciclista prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
-                        {% part form.end_coleta prefix%}<i class="material-icons prefix">add_location</i>{% endpart %}
-                        {% part form.end_entrega prefix %}<i class="material-icons prefix">place</i>{% endpart %}
-                        {% part form.desc prefix %}<i class="material-icons prefix">chat</i>{% endpart %}
-                        {% endform %}
-                        <button type="submit" class="btn">Entregar</button>
-                    </form>
-                </div>
-                <div class="col-md-5">
-                    <h1>Mapa de Entregas</h1>
-                    <div id="map"></div>
-                </div>
-         </div>
+             <div class="col-md-5">
+                {% block content %}
+                {% endblock %}
+             </div>
+        <div class="col-md-5">
+            <h1>Mapa de Entregas</h1>
+            <div id="map"></div>
         </div>
-
-        <div class="entregas">
-            <h4> Entregas em andamento </h4>
-            {% for entrega in entregasAtivas %}
-            <p>{{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }}</p>
-            {% endfor %}
+        </div>
         </div>
 
         <script>

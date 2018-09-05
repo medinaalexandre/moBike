@@ -5,6 +5,11 @@ h1 {
     text-align: center;
 }
 
+.container-fluid {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
 .btn {
 	margin-top: 10px;
 }
@@ -25,6 +30,10 @@ textarea {
 	width: 60%;
 	height: 30%;
 	resize: none;
+}
+
+.entregas {
+    text-align: center;
 }
 
 #map {

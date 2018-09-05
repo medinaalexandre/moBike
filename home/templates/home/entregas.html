@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+
+    <div class="entregas">
+        <h4> Entregas em andamento </h4>
+        {% for entrega in entregasAtivas %}
+        <p>{{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}
