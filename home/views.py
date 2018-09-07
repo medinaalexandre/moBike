@@ -5,10 +5,9 @@ from django.shortcuts import redirect
 
 # Create your views here.
 
-def entrega(request):
+def entregas(request):
     entregasAtivas = EntregaAtiva.objects.all()
     return render(request, 'home/entregas.html', {'entregasAtivas': entregasAtivas})
-
 
 def home(request):
     entregasAtivas = EntregaAtiva.objects.all()
@@ -26,4 +25,3 @@ def home(request):
     else:
         form = EntregaAtivaForm()
     return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
-
