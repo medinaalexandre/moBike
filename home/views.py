@@ -4,6 +4,11 @@ from .forms import EntregaAtivaForm
 from django.shortcuts import redirect
 
 # Create your views here.
+def excluirEntregaAtiva(request,id):
+    prnt = request.POST
+    print(prnt)
+    print(id)
+    return redirect('home/entregas.html')
 
 def entregas(request):
     entregasAtivas = EntregaAtiva.objects.all()
