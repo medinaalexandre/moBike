@@ -4,7 +4,7 @@
 
     <div class="entregas">
         {% for entrega in entregasAtivas %}
-            <p>{{entrega.id}} | {{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }}</p>
+            <p>{{entrega.id}} | {{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }} | {{entrega.data}}</p>
             <a href="{% url 'deleta_entregaativa' pk=entrega.id %}" class="btn">Excluir</a>
         {% endfor %}
     </div>

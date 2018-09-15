@@ -8,7 +8,6 @@ class Entrega(models.Model):
     end_coleta = models.CharField(max_length = 200) # trocar depois para o tipo que a API retornar
     end_entrega = models.CharField(max_length = 200)  # trocar depois para o tipo que a API retornar
     urgencia = models.IntegerField()
-    data = models.DateTimeField(default=timezone.now())
 
     def criar(self, end_coleta, end_entrega):
         self.end_coleta = end_coleta
@@ -27,6 +26,7 @@ class EntregaAtiva(models.Model):
     lat_entrega = models.FloatField(null = True)
     lng_entrega = models.FloatField(null = True)
     desc = models.TextField(null = True, max_length = 200)
+    data = models.DateTimeField(default=timezone.now())
 
     def verRota(self, coleta, entrega):
         endpoint = 'https://maps.googleapis.com/maps/api/directions/json?'
