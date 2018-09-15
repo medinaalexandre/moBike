@@ -4,9 +4,16 @@
 
     <div class="entregas">
         {% for entrega in entregasAtivas %}
-            <p>{{entrega.id}} | {{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }} | {{entrega.data}}</p>
+        <p><b>Ciclista:</b> {{ entrega.ciclista }}</p>
+        <p><b>Endereço de coleta:</b> {{ entrega.end_coleta }}</p>
+        <p><b>Endereço de entrega:</b> {{ entrega.end_entrega }}</p>
+        <p><b>Descrição:</b> {{ entrega.desc }}</p>
+        <p><b>Horário:</b> {{entrega.data}}</p>
             <a href="{% url 'deleta_entregaativa' pk=entrega.id %}" class="btn">Excluir</a>
+        <br><br><br>
         {% endfor %}
     </div>
 
 {% endblock %}
+
+
