@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 import urllib.request
 import json
 
@@ -7,6 +8,7 @@ class Entrega(models.Model):
     end_coleta = models.CharField(max_length = 200) # trocar depois para o tipo que a API retornar
     end_entrega = models.CharField(max_length = 200)  # trocar depois para o tipo que a API retornar
     urgencia = models.IntegerField()
+    data = models.DateTimeField(default=timezone.now())
 
     def criar(self, end_coleta, end_entrega):
         self.end_coleta = end_coleta

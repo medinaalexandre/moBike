@@ -3,10 +3,9 @@
 {% block content %}
 
     <div class="entregas">
-        <h4> Entregas em andamento </h4>
         {% for entrega in entregasAtivas %}
-        <p>{{entrega.id}} | {{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }}</p>
-        <button action="POST"> EXCLUIR </button>
+            <p>{{entrega.id}} | {{ entrega.ciclista }} | {{ entrega.end_coleta }} | {{ entrega.end_entrega }} | {{ entrega.desc }}</p>
+            <a href="{% url 'deleta_entregaativa' pk=entrega.id %}" class="btn">Excluir</a>
         {% endfor %}
     </div>
 
