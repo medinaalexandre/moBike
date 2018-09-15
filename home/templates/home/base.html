@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load material_form %}
+{% load tempo_atual %}
 
 <html lang="pt-br">
     <head>
@@ -20,10 +21,12 @@
          <div class="row">
           <div class="col-md-2 bg-light">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link" href="../" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
+              <a class="nav-link" href="/" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link active" href="/entregas" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
+              <br>
+              <b>Hora: </b>{% tempo_atual %}
             </div>
           </div>
              <div class="col-md-5">

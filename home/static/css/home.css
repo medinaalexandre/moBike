@@ -5,6 +5,11 @@ h1 {
     text-align: center;
 }
 
+.margem {
+    padding: 50px;
+    background-color: #232323;
+}
+
 .container-fluid {
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
