@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load material_form %}
+{% load tempo_atual %}
 
 <html lang="pt-br">
     <head>
@@ -24,6 +25,8 @@
               <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link active" href="{% url 'entregas' %}" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
+              <br>
+                <b>Hora: {% tempo_atual %}</b>
             </div>
           </div>
              <div class="col-md-5">

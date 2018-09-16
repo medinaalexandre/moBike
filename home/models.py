@@ -28,6 +28,7 @@ class Entrega(models.Model):
     def __str__(self):
         return self.end_entrega
 
+
 class EntregaAtiva(models.Model):
     ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE, blank = True, default = None, null = True)
     end_coleta = models.CharField(max_length = 100)  #endereço escrito como usuario inseriu
@@ -47,8 +48,8 @@ class EntregaAtiva(models.Model):
     def verRota(self, coleta, entrega):
         endpoint = 'https://maps.googleapis.com/maps/api/directions/json?'
         api_key = 'AIzaSyBDmhhr_81wgfC0l_80i4nMxiDyZmlxwgI'
-        origin = coleta.replace(' ','+')
-        destination = entrega.replace(' ','+')
+        origin = coleta.replace(' ', '+')
+        destination = entrega.replace(' ', '+')
         travel_mode = 'bicycling'
 
         nav_request = 'origin={}&destination={}&mode={}&key={}'.format(origin, destination, travel_mode, api_key)
