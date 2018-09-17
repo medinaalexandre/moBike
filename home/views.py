@@ -13,16 +13,36 @@ class EntregaAtivaDeleteView(DeleteView):
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
+    def get_object(self, queryset=None):
+        ciclista = None
+
+        id = self.kwargs.get(self.pk_url_kwarg)
+        slug = self.kwargs.get(self.slug_url_kwarg)
+
+        if id is not None:
+            # Busca o funcionario apartir do id
+            ciclista = EntregaAtiva.objects.filter(id=id).first()
+
+        elif slug is not None:
+
+            campo_slug = self.get_slug_field()
+
+            # Busca o funcionario apartir do slug
+            ciclista = EntregaAtiva.objects.filter(**{campo_slug: slug}).first()
+
+        # Retorna o objeto encontrado
+        return ciclista
+
+def listaCiclistas(request):
+    entregasativa = EntregaAtiva.objects.all()
+    render(request, 'entregas/delegarentrega/<pk>', {'entregasativa':entregasativa})
+
 class EntregaAtivaDelegaView(UpdateView):
     template_name = "home/delegarentrega.html"
     model = EntregaAtiva
     fields = '__all__'
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
-
-    def listaCiclistas(request):
-        ciclistas = Ciclista.objects.all()
-        return render(request,'home/delegar',{'ciclistas':ciclistas})
 
 
 def entregas(request):

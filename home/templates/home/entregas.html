@@ -30,7 +30,7 @@
               <table>
                     <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Descrição</th><th></th></tr>
                     {% for ed in entregasDisponiveis %}
-                    <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th> <a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a></th></tr>
+                    <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th> <a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a></th><th><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
                     {% endfor %}
               </table>
           </div>
