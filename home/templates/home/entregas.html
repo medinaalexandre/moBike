@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load material_form %}
+{% load tempo_atual %}
 
 <html lang="pt-br">
     <head>
@@ -19,10 +20,12 @@
          <div class="row">
           <div class="col-md-2 bg-light">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link" href="../" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
+              <a class="nav-link" href="{% url 'home' %}" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link active" href="{% url 'entregas' %}" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
+                <br>
+                <b>Hora: {% tempo_atual %}</b>
             </div>
           </div>
           <div class="col-md-4">
@@ -30,7 +33,7 @@
               <table>
                     <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Descrição</th><th></th></tr>
                     {% for ed in entregasDisponiveis %}
-                    <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th> <a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a></th><th><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
+                    <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
                     {% endfor %}
               </table>
           </div>
@@ -44,7 +47,7 @@
                   </table>
         </div>
         <div class="col-md-3">
-            <h3>Ultimas entregues</h3>
+            <h3>Entregas Recentes</h3>
             <table>
                     <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Ciclista</th></tr>
                     {% for e in ultimasDez %}

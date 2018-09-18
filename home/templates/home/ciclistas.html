@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load material_form %}
+{% load tempo_atual %}
 
 <html lang="pt-br">
     <head>
@@ -24,6 +25,8 @@
               <a class="nav-link active" href="#" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link" href="{% url 'entregas' %}" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
+                <br>
+                <b>Hora: {% tempo_atual %}</b>
             </div>
           </div>
              <div class="col-md-5">
@@ -31,10 +34,13 @@
                      <form method="POST">
                          <h1>Adicionar Ciclista</h1>
                          {% csrf_token %}
-                         {{ form.as_p }}
+                         {% form %}
+                         {% part form prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+                         {% endform %}
                          <button type="submit" class="btn">Adicionar</button>
                      </form>
-
+                     <br>
+                    <h5>Ciclistas Cadastrados:</h5>
                     {% for c in ciclistas %}
                         <p>{{c}}</p>
                     {% endfor %}
