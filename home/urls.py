@@ -8,4 +8,6 @@ urlpatterns = [
     path('entregas/delegarEntrega/<pk>', views.EntregaAtivaDelegaView.as_view(), name="delega_entregaativa"),
     path('entregas/delegarEntrega/<pk>', views.listaCiclistas, name="listaciclistas"),
     path('ciclistas', views.ciclistas, name='ciclistas'),
+    path('userPos', views.userPos, name='userPos'),
+    path('home/excluirCiclista/<pk>', views.CiclistaDeleteView.as_view(), name="deleta_ciclista"),
 ]

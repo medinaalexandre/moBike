@@ -3,6 +3,11 @@ from django.utils import timezone
 import urllib.request
 import json
 
+
+class UserGeoLocation(models.Model):
+    latitude = models.FloatField(blank=False, null=False)
+    longitude = models.FloatField(blank=False, null=False)
+
 class Ciclista(models.Model):
     nome = models.CharField(blank = False, max_length = 100)
     STATUSES = (

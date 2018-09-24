@@ -40,15 +40,19 @@
                          <button type="submit" class="btn">Adicionar</button>
                      </form>
                      <br>
-                    <h5>Ciclistas Cadastrados:</h5>
-                    {% for c in ciclistas %}
-                        <p>{{c}}</p>
-                    {% endfor %}
                 </div>
              </div>
         <div class="col-md-5">
-            <h1>Mapa de Entregas</h1>
-            <div id="map"></div>
+            <div>
+                <ul class="list-group">
+                  {% for c in ciclistas %}
+                    <li class="list-group-item justify-content-between">
+                        {{c}}
+                    <span class="badge badge-default badge-pill"><a href="{% url 'deleta_ciclista' pk=c.id %}" class="btn">Excluir</a></span>
+                  </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
         </div>
         </div>

@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{% load material_form %}
+<html>
+ <head>
+        <title>moBike</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="UTF-8">
+        <!-- css files -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        {% include 'material/includes/material_css.html' %}
+        <script src="{% static 'material/js/jquery.js' %}"></script>
+        {% include 'material/includes/material_js.html' %}
+        <!-- bootstrap -->
+    </head>
+    <body>
+
+        <p>Click the button to get your coordinates.</p>
+        <button onclick="getLocation()">Get Your Location</button>
+        <p id="demo"></p>
+        <button type="button" id="btn_submit" class="btn btn-primary form-control" disabled>Submit</button>
+        <script src = "../../static/js/userPos.js">
+        </script>
+    </body>
+</html>

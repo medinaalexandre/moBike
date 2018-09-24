@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
 
+
 # Create your views here.
 class EntregaAtivaDeleteView(DeleteView):
     template_name="home/exclui.html"
@@ -33,6 +34,34 @@ class EntregaAtivaDeleteView(DeleteView):
         # Retorna o objeto encontrado
         return ciclista
 
+class CiclistaDeleteView(DeleteView):
+    template_name="home/excluirCiclista.html"
+    model = EntregaAtiva
+    fields = '__all__'
+    context_object_name = 'ciclista'
+    success_url = reverse_lazy("ciclistas")
+
+    def get_object(self, queryset=None):
+        ciclista = None
+
+        id = self.kwargs.get(self.pk_url_kwarg)
+        slug = self.kwargs.get(self.slug_url_kwarg)
+
+        if id is not None:
+            # Busca o ciclista apartir do id
+            ciclista = Ciclista.objects.filter(id=id).first()
+
+        elif slug is not None:
+
+            campo_slug = self.get_slug_field()
+
+            # Busca o ciclista apartir do slug
+            ciclista = Ciclista.objects.filter(**{campo_slug: slug}).first()
+
+        # Retorna o objeto encontrado
+        return ciclista
+
+
 def listaCiclistas(request):
     entregasativa = EntregaAtiva.objects.all()
     render(request, 'entregas/delegarentrega/<pk>', {'entregasativa':entregasativa})
@@ -40,7 +69,7 @@ def listaCiclistas(request):
 class EntregaAtivaDelegaView(UpdateView):
     template_name = "home/delegarentrega.html"
     model = EntregaAtiva
-    fields = ('ciclista', 'end_coleta', 'end_entrega', 'desc', 'data')
+    fields = '__all__'
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
@@ -80,3 +109,6 @@ def ciclistas(request):
     else:
         form = CiclistaForm()
     return render(request, 'home/ciclistas.html', {'form': form, 'ciclistas': ciclistas})
+
+def userPos(request):
+    return render(request, 'home/userLocationMap.html')
