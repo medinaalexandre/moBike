@@ -29,20 +29,31 @@
             </div>
           </div>
           <div class="col-md-4">
-              <h3>Entregas Disponíveis</h3>
-              <table>
-                    <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Descrição</th><th></th></tr>
-                    {% for ed in entregasDisponiveis %}
-                    <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
+              <h4>Entregas Disponiveis</h4>
+              <div class="table-responsive">
+              <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Data</th>
+                      <th scope="col">Coleta</th>
+                      <th scope="col">Entrega</th>
+                      <th scope="col">Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for ed in entregasDisponiveis %}
+                    <tr><th><p style="bold:none;">{{ed.data}}<p></p></th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
                     {% endfor %}
-              </table>
+                  </tbody>
+                </table>
+              </div>
           </div>
         <div class="col-md-3">
             <h3>Entregas em Andamento</h3>
                 <table>
                         <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Ciclista</th></tr>
                         {% for ed in entregasEmAndamento %}
-                        <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.ciclista}}</th></tr>
+                            <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.ciclista}}</th></tr>
                         {% endfor %}
                   </table>
         </div>

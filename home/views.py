@@ -69,7 +69,7 @@ def listaCiclistas(request):
 class EntregaAtivaDelegaView(UpdateView):
     template_name = "home/delegarentrega.html"
     model = EntregaAtiva
-    fields = '__all__'
+    fields = ('ciclista','status',)
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
