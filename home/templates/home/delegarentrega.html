@@ -37,10 +37,6 @@
                     <button type="submit" class="btn">Delegar Entrega</button>
                 </form>
              </div>
-
-             {% for e in entregasativa %}
-                <p>{{ e }}</p>
-             {% endfor %}
         <div class="col-md-5">
             <h1>Mapa de Entregas</h1>
             <div id="map"></div>
@@ -48,35 +44,28 @@
         </div>
         </div>
 
-        <script>
-            function initMap(){
-                var options = {
-                    zoom:14.67,
-                    center:{lat:-29.709018,lng:-53.7337614}
-                }
+         <script>
+        function initMap(){
 
-                var map = new google.maps.Map(document.getElementById('map'),options);
+        var directionsDisplay = new google.maps.DirectionsRenderer();
+        var directionsService = new google.maps.DirectionsService();
 
-                // pegando os markers do bd
-                var markers = [
-                    {% for entrega in entregasAtivas %}
-                        // coleta
-                        {
-                            coords:{lat: {{entrega.lat_coleta}},lng:{{entrega.lng_coleta}} },
-                            content:'Coleta: {{entrega.desc}}'
-                        },
-                        // entrega
-                        {
-                            coords:{lat: {{entrega.lat_entrega}},lng:{{entrega.lng_entrega}} },
-                            content:'Entrega: {{entrega.desc}}'
-                        },
-                    {% endfor %}
-                ];
 
-                // loop through markers
-                for(var i=0;i<markers.length;i++){
-                    addMarker(markers[i]);
-                }
+        var options = {
+            zoom:14.67,
+            center:{lat:-29.709018,lng:-53.7337614}
+        }
+
+
+        var map = new google.maps.Map(document.getElementById('map'),options);
+
+        directionsDisplay.setMap(map);
+
+
+
+        addMarker({coords:{lat: {{entregaativa.lat_coleta}}, lng: {{entregaativa.lng_coleta}}}, content: 'Coleta: {{entregaativa.desc}}'});
+        addMarker({coords:{lat: {{entregaativa.lat_entrega}}, lng: {{entregaativa.lng_entrega}}}, content: 'Entrega: {{entregaativa.desc}}'});
+
 
                 // Add Marker Function
                 function addMarker(props){
@@ -98,11 +87,29 @@
 
                         marker.addListener('click', function(){
                             infoWindow.open(map,marker);
+                            calculateRoute();
                         });
                     }
                 }
             }
+Route();
+            function Route() {
+
+                var start = new google.maps.LatLng({{entregaativa.lat_coleta}},{{entregaativa.lng_coleta}});
+                var end =new google.maps.LatLng({{entregaativa.lat_entrega}},{{entregaativa.lng_entrega}});
+                var request = {
+                    origin:start,
+                    destination:end,
+                    travelMode: google.maps.TravelMode.BICYCLING
+                };
+                directionsService.route(request, function(result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                  } else { alert("couldn't get directions:"+status); }
+              });
+            }
         </script>
+
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmhhr_81wgfC0l_80i4nMxiDyZmlxwgI&callback=initMap"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

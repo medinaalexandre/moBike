@@ -10,4 +10,5 @@ urlpatterns = [
     path('ciclistas', views.ciclistas, name='ciclistas'),
     path('userPos', views.userPos, name='userPos'),
     path('home/excluirCiclista/<pk>', views.CiclistaDeleteView.as_view(), name="deleta_ciclista"),
+    path('home/xy', views.salvaXY, name="salvaXY"),
 ]

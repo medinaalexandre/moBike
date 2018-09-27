@@ -8,6 +8,14 @@ class UserGeoLocation(models.Model):
     latitude = models.FloatField(blank=False, null=False)
     longitude = models.FloatField(blank=False, null=False)
 
+    def criar(self, latitude, longitude):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.save()
+
+    def __str__(self):
+        return self.latitude
+
 class Ciclista(models.Model):
     nome = models.CharField(blank = False, max_length = 100)
     STATUSES = (

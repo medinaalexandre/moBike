@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from .models import EntregaAtiva, Ciclista, Entrega
+from .models import EntregaAtiva, Ciclista, Entrega, UserGeoLocation
 from .forms import EntregaAtivaForm, CiclistaForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
+
+
 
 
 # Create your views here.
@@ -97,6 +100,16 @@ def home(request):
     else:
         form = EntregaAtivaForm()
     return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
+
+def salvaXY(request):
+
+    if request.method == 'GET':
+        latitude = request.GET.get('latitude')
+        longitude = request.GET.get('longitude')
+        print(latitude)
+        print(longitude)
+        return HttpResponse('result')
+
 
 def ciclistas(request):
     ciclistas = Ciclista.objects.all()

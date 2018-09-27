@@ -43,6 +43,12 @@
                         <button type="submit" class="btn">Entregar</button>
                     </form>
 
+                    <form>
+                     <input type = "button" onclick = "getLocationUpdate();" value = "Watch Update"/>
+                  </form>
+
+
+
 
                 </div>
                 <div class="col-md-5">
@@ -131,6 +137,50 @@
                 }
             }
         </script>
+
+
+        <script type = "text/javascript">
+         var watchID;
+         var geoLoc;
+
+         function showLocation(position) {
+            console.log(position);
+             $.ajax({
+                url: '{%url 'salvaXY' %}',
+                data: {
+                  'latitude': position.coords.latitude,
+                  'longitude': position.coords.longitude
+                },
+                dataType: 'json',
+                success: function (data) {
+                  if (data.is_taken) {
+                    console.log("O usuário não saiu do lugar");
+                  }
+                }
+              });
+         }
+
+         function errorHandler(err) {
+            if(err.code == 1) {
+               alert("Error: Access is denied!");
+            } else if( err.code == 2) {
+               alert("Error: Position is unavailable!");
+            }
+         }
+
+         function getLocationUpdate(){
+
+            if(navigator.geolocation){
+
+               // timeout at 60000 milliseconds (60 seconds)
+               var options = {timeout:60000, enableHighAccuracy: true};
+               geoLoc = navigator.geolocation;
+               watchID = geoLoc.watchPosition(showLocation, errorHandler, options);
+            } else {
+               alert("Sorry, browser does not support geolocation!");
+            }
+         }
+      </script>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmhhr_81wgfC0l_80i4nMxiDyZmlxwgI&callback=initMap"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
