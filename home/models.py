@@ -3,18 +3,14 @@ from django.utils import timezone
 import urllib.request
 import json
 
-
 class UserGeoLocation(models.Model):
-    latitude = models.FloatField(blank=False, null=False)
-    longitude = models.FloatField(blank=False, null=False)
-
-    def criar(self, latitude, longitude):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.save()
+    tempo = models.DateTimeField(default=timezone.now)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
+    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.latitude
+        return self.tempo
 
 class Ciclista(models.Model):
     nome = models.CharField(blank = False, max_length = 100)
@@ -43,7 +39,7 @@ class Entrega(models.Model):
 
 
 class EntregaAtiva(models.Model):
-    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE, blank = True, default = None, null = True)
+    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE, blank = True, default = None, null = False)
     end_coleta = models.CharField(max_length = 100)  #endereço escrito como usuario inseriu
     lat_coleta = models.FloatField(null = True)  # latitute, no formato da api
     lng_coleta = models.FloatField(null = True)  # longitude, no formato da api

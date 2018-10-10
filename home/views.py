@@ -4,10 +4,8 @@ from .forms import EntregaAtivaForm, CiclistaForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.http import HttpResponse
+from datetime import datetime
 from django.views.generic import TemplateView, ListView, UpdateView, CreateView, DeleteView
-
-
-
 
 # Create your views here.
 class EntregaAtivaDeleteView(DeleteView):
@@ -104,10 +102,15 @@ def home(request):
 def salvaXY(request):
 
     if request.method == 'GET':
-        latitude = request.GET.get('latitude')
-        longitude = request.GET.get('longitude')
+        latitude = float(request.GET.get('latitude'))
+        longitude = float(request.GET.get('longitude'))
         print(latitude)
         print(longitude)
+        u = UserGeoLocation()
+        u.latitude = latitude
+        u.longitude = longitude
+        u.save()
+        print('salvado')
         return HttpResponse('result')
 
 
