@@ -9,6 +9,11 @@ b {
     margin-top: 390px;
 }
 
+h5 {
+	text-align: center;
+	padding-bottom: 10px;
+}
+
 .margem {
     padding: 50px;
     background-color: #232323;
@@ -39,6 +44,14 @@ textarea {
 	width: 60%;
 	height: 30%;
 	resize: none;
+}
+
+.aux {
+	float: right;
+}
+
+.cic {
+	margin-top: 2%;
 }
 
 .entregas {

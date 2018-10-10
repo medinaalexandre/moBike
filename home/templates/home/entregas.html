@@ -29,9 +29,8 @@
             </div>
           </div>
           <div class="col-md-4">
-              <h4>Entregas Disponiveis</h4>
-              <div class="table-responsive">
-              <table class="table table-striped">
+              <h5><b>Entregas Disponiveis</b></h5>
+              <table class="table-responsive">
                   <thead>
                     <tr>
                       <th scope="col">Data</th>
@@ -42,27 +41,46 @@
                   </thead>
                   <tbody>
                   {% for ed in entregasDisponiveis %}
-                    <tr><th><p style="bold:none;">{{ed.data}}<p></p></th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.desc}}</th><th><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a><a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></th></tr>
+                    <tr>
+                        <td>{{ed.data|date:"d/m Y H:i"}}<p></p></td>
+                        <td>{{ed.end_coleta}}</td>
+                        <td>{{ed.end_entrega}}</td>
+                        <td>{{ed.desc}}</td>
+                        <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a>
+                            <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></td>
+                    </tr>
                     {% endfor %}
                   </tbody>
                 </table>
-              </div>
+
           </div>
-        <div class="col-md-3">
-            <h3>Entregas em Andamento</h3>
+        <div class="col-md-3 bg-light">
+            <h5><b>Entregas em Andamento</b></h5>
                 <table>
-                        <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Ciclista</th></tr>
+                        <tr><th>Data</th>
+                            <th>Coleta</th>
+                            <th>Entrega</th>
+                            <th>Ciclista</th></tr>
                         {% for ed in entregasEmAndamento %}
-                            <tr><th>{{ed.data}}</th><th>{{ ed.end_coleta }}</th><th> {{ed.end_entrega}}</th><th>{{ed.ciclista}}</th></tr>
+                            <tr><td>{{ed.data|date:"d/m Y H:i"}}</td>
+                                <td>{{ed.end_coleta}}</td>
+                                <td>{{ed.end_entrega}}</td>
+                                <td>{{ed.ciclista}}</td></tr>
                         {% endfor %}
                   </table>
         </div>
         <div class="col-md-3">
-            <h3>Entregas Recentes</h3>
+            <h5><b>Entregas Recentes</b></h5>
             <table>
-                    <tr><th>Data</th><th>Endereço entrega</th><th> Endereço coleta</th><th>Ciclista</th></tr>
+                    <tr><th>Data</th>
+                        <th>Coleta</th>
+                        <th>Entrega</th>
+                        <th>Ciclista</th></tr>
                     {% for e in ultimasDez %}
-                    <tr><th>{{e.data}}</th><th>{{ e.end_coleta }}</th><th> {{e.end_entrega}}</th><th>{{e.ciclista}}</th></tr>
+                    <tr><td>{{e.data|date:"d/m Y H:i"}}</td>
+                        <td>{{e.end_coleta}}</td>
+                        <td>{{e.end_entrega}}</td>
+                        <td>{{e.ciclista}}</td></tr>
                     {% endfor %}
               </table>
 

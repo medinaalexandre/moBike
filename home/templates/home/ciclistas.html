@@ -2,7 +2,7 @@
 {% load material_form %}
 {% load tempo_atual %}
 
-<html lang="pt-br">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/html">
     <head>
         <title>moBike</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,13 +42,13 @@
                      <br>
                 </div>
              </div>
-        <div class="col-md-5">
+        <div class="cic col-md-5">
             <div>
                 <ul class="list-group">
                   {% for c in ciclistas %}
                     <li class="list-group-item justify-content-between">
-                        {{c}}
-                    <span class="badge badge-default badge-pill"><a href="{% url 'deleta_ciclista' pk=c.id %}" class="btn">Excluir</a></span>
+                        <b>{{c}}</b>
+                        <a href="{% url 'deleta_ciclista' pk=c.id %}" class="aux btn badge-default">Excluir</a>
                   </li>
                     {% endfor %}
                 </ul>
