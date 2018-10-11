@@ -42,12 +42,13 @@
                   <tbody>
                   {% for ed in entregasDisponiveis %}
                     <tr>
-                        <td>{{ed.data|date:"d/m Y H:i"}}<p></p></td>
+                        <td>{{ed.data|date:"d/m Y"}}<p></p></td>
                         <td>{{ed.end_coleta}}</td>
                         <td>{{ed.end_entrega}}</td>
                         <td>{{ed.desc}}</td>
-                        <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="btn">Delegar</a>
-                            <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="btn">Excluir</a></td>
+                        <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="material-icons prefix">directions_bike</a>
+                            <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="material-icons prefix">delete</a>
+                            <a href="{% url 'entrega_detalhe' pk=ed.id %}" class="material-icons prefix">visibility</a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -62,10 +63,14 @@
                             <th>Entrega</th>
                             <th>Ciclista</th></tr>
                         {% for ed in entregasEmAndamento %}
-                            <tr><td>{{ed.data|date:"d/m Y H:i"}}</td>
+                            <tr><td>{{ed.data|date:"d/m Y"}}</td>
                                 <td>{{ed.end_coleta}}</td>
                                 <td>{{ed.end_entrega}}</td>
-                                <td>{{ed.ciclista}}</td></tr>
+                                <td>{{ed.ciclista}}</td>
+                                <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="material-icons prefix">check_box</a>
+                                    <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="material-icons prefix">delete</a>
+                                    <a href="{% url 'entrega_detalhe' pk=ed.id %}" class="material-icons prefix">visibility</a></td>
+                            </tr>
                         {% endfor %}
                   </table>
         </div>
@@ -77,10 +82,13 @@
                         <th>Entrega</th>
                         <th>Ciclista</th></tr>
                     {% for e in ultimasDez %}
-                    <tr><td>{{e.data|date:"d/m Y H:i"}}</td>
+                    <tr><td>{{e.data|date:"d/m Y"}}</td>
                         <td>{{e.end_coleta}}</td>
                         <td>{{e.end_entrega}}</td>
-                        <td>{{e.ciclista}}</td></tr>
+                        <td>{{e.ciclista}}</td>
+                        <td><a href="{% url 'deleta_entregaativa' pk=e.id %}" class="material-icons prefix">delete</a><br>
+                            <a href="{% url 'entrega_detalhe' pk=e.id %}" class="material-icons prefix">visibility</a></td>
+                    </tr>
                     {% endfor %}
               </table>
 
