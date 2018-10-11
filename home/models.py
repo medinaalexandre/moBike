@@ -7,7 +7,6 @@ class UserGeoLocation(models.Model):
     tempo = models.DateTimeField(default=timezone.now)
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
-    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.tempo

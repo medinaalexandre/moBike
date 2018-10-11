@@ -12,4 +12,5 @@ urlpatterns = [
     path('userPos', views.userPos, name='userPos'),
     path('home/excluirCiclista/<pk>', views.CiclistaDeleteView.as_view(), name="deleta_ciclista"),
     path('home/xy', views.salvaXY, name="salvaXY"),
+    path('home/entrega/<pk>', views.entrega_detalhe, name='entrega_detalhe'),
 ]

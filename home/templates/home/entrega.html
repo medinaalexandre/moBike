@@ -1,0 +1,44 @@
+{% load staticfiles %}
+{% load material_form %}
+{% load tempo_atual %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Entrega {{entrega}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <!-- css files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}
+    <!-- bootstrap -->
+</head>
+<body>
+    <div class="container-fluid">
+         <div class="row">
+          <div class="col-md-2 bg-light">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link active" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
+              <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
+              <a class="nav-link" href="{% url 'entregas' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
+              <a class="nav-link" href="#" role="tab" aria-controls="v-pills-login" aria-selected="false">Logout</a>
+                <br>
+                <b>Hora: {% tempo_atual %}</b>
+            </div>
+          </div>
+             <div class="col-md-5">
+                 {{entrega}}
+             </div>
+             <div class="col-md-5">
+                 <div id="map"></div>
+             </div>
+         </div>
+    </div>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmhhr_81wgfC0l_80i4nMxiDyZmlxwgI&callback=initMap"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

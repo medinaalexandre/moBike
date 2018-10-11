@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import EntregaAtiva, Ciclista, Entrega, UserGeoLocation
 from .forms import EntregaAtivaForm, CiclistaForm
 from django.shortcuts import redirect
@@ -93,11 +93,18 @@ def home(request):
             entrega.lng_coleta = rota['routes'][0]['legs'][0]['start_location']['lng']
             entrega.lat_entrega = rota['routes'][0]['legs'][0]['end_location']['lat']
             entrega.lng_entrega = rota['routes'][0]['legs'][0]['end_location']['lng']
+            if entrega.ciclista != ' ':
+                entrega.status = 'E'
             entrega.save()
             return redirect('home')
     else:
         form = EntregaAtivaForm()
     return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
+
+def entrega_detalhe(request,pk):
+    entrega = get_object_or_404(EntregaAtiva,pk=pk)
+    return render(request,'home/entrega.html',{'entrega':entrega})
+
 
 def salvaXY(request):
 
