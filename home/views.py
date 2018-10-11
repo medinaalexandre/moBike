@@ -70,7 +70,18 @@ def listaCiclistas(request):
 class EntregaAtivaDelegaView(UpdateView):
     template_name = "home/delegarentrega.html"
     model = EntregaAtiva
-    fields = ('ciclista','status',)
+    fields = ('ciclista','status','data_inicio')
+    # TODO
+    # 'status e 'data_inicio tem que preencher automatico, implementar isso
+    context_object_name = 'entregaativa'
+    success_url = reverse_lazy("entregas")
+
+class CompletaEntregaView(UpdateView):
+    template_name = "home/completarentrega.html"
+    model = EntregaAtiva
+    fields = ('status','data_entrega')
+    # TODO
+    # precisa deletar essa entregaativa, e criar uma entrega com as informações necessarias
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
@@ -93,8 +104,12 @@ def home(request):
             entrega.lng_coleta = rota['routes'][0]['legs'][0]['start_location']['lng']
             entrega.lat_entrega = rota['routes'][0]['legs'][0]['end_location']['lat']
             entrega.lng_entrega = rota['routes'][0]['legs'][0]['end_location']['lng']
-            if entrega.ciclista != ' ':
+            if entrega.ciclista is None:
+                entrega.status = 'D'
+            else:
                 entrega.status = 'E'
+                entrega.data_inicio = datetime.now()
+
             entrega.save()
             return redirect('home')
     else:

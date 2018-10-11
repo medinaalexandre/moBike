@@ -7,6 +7,7 @@ urlpatterns = [
     path('entregas', views.entregas, name='entregas'),
     path('home/excluir/<pk>', views.EntregaAtivaDeleteView.as_view(), name="deleta_entregaativa"),
     path('entregas/delegarEntrega/<pk>', views.EntregaAtivaDelegaView.as_view(), name="delega_entregaativa"),
+    path('entregas/completarEntrega/<pk>', views.CompletaEntregaView.as_view(), name="completa_entregaativa"),
     path('entregas/delegarEntrega/<pk>', views.listaCiclistas, name="listaciclistas"),
     path('ciclistas', views.ciclistas, name='ciclistas'),
     path('userPos', views.userPos, name='userPos'),

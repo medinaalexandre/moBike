@@ -38,13 +38,16 @@ class Entrega(models.Model):
 
 
 class EntregaAtiva(models.Model):
-    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE, blank = True, default = None, null = False)
+    ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE, blank = True, null = True)
     end_coleta = models.CharField(max_length = 100)  #endereço escrito como usuario inseriu
     lat_coleta = models.FloatField(null = True)  # latitute, no formato da api
     lng_coleta = models.FloatField(null = True)  # longitude, no formato da api
+    data_inicio = models.DateTimeField(blank = True, null = True)
+    data_coleta = models.DateTimeField(blank = True, null = True)
     end_entrega = models.CharField(max_length = 100)
     lat_entrega = models.FloatField(null = True)
     lng_entrega = models.FloatField(null = True)
+    data_entrega = models.DateTimeField(blank = True, null = True)
     desc = models.TextField(null = True, max_length = 200)
     data = models.DateTimeField(default=timezone.now)
     STATUSES = (

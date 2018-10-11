@@ -67,7 +67,7 @@
                                 <td>{{ed.end_coleta}}</td>
                                 <td>{{ed.end_entrega}}</td>
                                 <td>{{ed.ciclista}}</td>
-                                <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="material-icons prefix">check_box</a>
+                                <td><a href="{% url 'completa_entregaativa' pk=ed.id %}" class="material-icons prefix">check_box</a>
                                     <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="material-icons prefix">delete</a>
                                     <a href="{% url 'entrega_detalhe' pk=ed.id %}" class="material-icons prefix">visibility</a></td>
                             </tr>
