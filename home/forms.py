@@ -11,3 +11,8 @@ class CiclistaForm(forms.ModelForm):
     class Meta:
         model = Ciclista
         fields = ('nome',)
+
+class ModoCiclistaForm(forms.ModelForm):
+    class Meta:
+        model = Ciclista
+        fields = ('nome',)

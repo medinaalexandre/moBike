@@ -24,6 +24,7 @@
               <a class="nav-link active" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link" href="{% url 'entregas' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
+              <a class="nav-link" href="{% url 'modociclista' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Modo Ciclista</a>
               <a class="nav-link" href="#" role="tab" aria-controls="v-pills-login" aria-selected="false">Logout</a>
                 <br>
                 <b>Hora: {% tempo_atual %}</b>
@@ -44,8 +45,8 @@
                     </form>
 
                     <form>
-                     <input type = "button" onclick = "getLocationUpdate();" value = "Watch Update"/>
-                  </form>
+                        <input type = "button" onclick = "getLocationUpdate();" value = "Watch Update"/>
+                    </form>
 
 
 

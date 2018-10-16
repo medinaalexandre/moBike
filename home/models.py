@@ -27,6 +27,7 @@ class Entrega(models.Model):
     ciclista = models.ForeignKey("Ciclista", on_delete=models.CASCADE)
     end_coleta = models.CharField(max_length = 200) # trocar depois para o tipo1 que a API retornar
     end_entrega = models.CharField(max_length = 200)  # trocar depois para o tipo que a API retornar
+    data = models.DateTimeField(blank = True, default = None)
 
     def criar(self, end_coleta, end_entrega):
         self.end_coleta = end_coleta

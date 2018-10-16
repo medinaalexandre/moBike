@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import EntregaAtiva, Ciclista, Entrega, UserGeoLocation
-from .forms import EntregaAtivaForm, CiclistaForm
+from .forms import EntregaAtivaForm, CiclistaForm, ModoCiclistaForm
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.http import HttpResponse
@@ -62,7 +62,6 @@ class CiclistaDeleteView(DeleteView):
         # Retorna o objeto encontrado
         return ciclista
 
-
 def listaCiclistas(request):
     entregasativa = EntregaAtiva.objects.all()
     render(request, 'entregas/delegarentrega/<pk>', {'entregasativa':entregasativa})
@@ -70,9 +69,10 @@ def listaCiclistas(request):
 class EntregaAtivaDelegaView(UpdateView):
     template_name = "home/delegarentrega.html"
     model = EntregaAtiva
-    fields = ('ciclista','status','data_inicio')
+    fields = ('ciclista','status', )
     # TODO
     # 'status e 'data_inicio tem que preencher automatico, implementar isso
+    # sepa tem que criar +1 view para atualizar, com request, ai pega o objeto e atualiza
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
@@ -80,10 +80,12 @@ class CompletaEntregaView(UpdateView):
     template_name = "home/completarentrega.html"
     model = EntregaAtiva
     fields = ('status','data_entrega')
-    # TODO
-    # precisa deletar essa entregaativa, e criar uma entrega com as informações necessarias
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
+    # TODO
+    # precisa deletar essa entregaativa, e criar uma entrega com as informações necessarias
+    #msm coisa da função de cima
+
 
 
 def entregas(request):
@@ -122,13 +124,13 @@ def entrega_detalhe(request,pk):
 
 
 def salvaXY(request):
-
     if request.method == 'GET':
         latitude = float(request.GET.get('latitude'))
         longitude = float(request.GET.get('longitude'))
         print(latitude)
         print(longitude)
         u = UserGeoLocation()
+        #u.ciclista = Ciclista.objects.get(pk = pk)
         u.latitude = latitude
         u.longitude = longitude
         u.save()
@@ -150,3 +152,15 @@ def ciclistas(request):
 
 def userPos(request):
     return render(request, 'home/userLocationMap.html')
+
+def modoCiclista(request):
+    ciclistas = Ciclista.objects.all()
+    return render(request,'home/modociclista.html', {'ciclistas':ciclistas})
+
+def modoCiclistaPk(request,pk):
+    ciclista = get_object_or_404(Ciclista, pk=pk)
+    entregas = Entrega.objects.filter(ciclista = pk)
+    entregaatual = EntregaAtiva.objects.filter(ciclista = pk)
+    print(entregas)
+    print(entregaatual)
+    return render(request,'home/modociclistapk.html', {'ciclista':ciclista, 'entregas':entregas, 'entregaatual':entregaatual})
