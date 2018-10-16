@@ -87,14 +87,13 @@ def CompletaEntrega(request,pk):
     entregaConcluida.end_entrega = entrega.end_entrega
     entregaConcluida.data = entrega.data
     # salva no bd
+    print('Entrega criada')
     entregaConcluida.save()
-
     # deleta entregaAtiva
+    print('EntregaAtiva excluida')
     entrega.delete()
 
-
-
-    return render(request, 'home/entregas.html')
+    return redirect('entregas')
 
 
 def entregas(request):
