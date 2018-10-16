@@ -76,15 +76,13 @@ class EntregaAtivaDelegaView(UpdateView):
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
-class CompletaEntregaView(UpdateView):
-    template_name = "home/completarentrega.html"
-    model = EntregaAtiva
-    fields = ('status','data_entrega')
-    context_object_name = 'entregaativa'
-    success_url = reverse_lazy("entregas")
-    # TODO
-    # precisa deletar essa entregaativa, e criar uma entrega com as informações necessarias
-    #msm coisa da função de cima
+def CompletaEntrega(request,pk):
+
+    entrega = EntregaAtiva.objects.get(pk=pk)
+    print('TESTE')
+    print(entrega)
+    data = entrega.data_inicio
+    print(data)
 
 
 
