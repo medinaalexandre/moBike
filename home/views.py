@@ -35,6 +35,7 @@ class EntregaAtivaDeleteView(DeleteView):
         # Retorna o objeto encontrado
         return ciclista
 
+
 class CiclistaDeleteView(DeleteView):
     template_name="home/excluirCiclista.html"
     model = EntregaAtiva
@@ -61,6 +62,7 @@ class CiclistaDeleteView(DeleteView):
 
         # Retorna o objeto encontrado
         return ciclista
+
 
 def listaCiclistas(request):
     entregasativa = EntregaAtiva.objects.all()
@@ -119,7 +121,6 @@ def home(request):
             else:
                 entrega.status = 'E'
                 entrega.data_inicio = datetime.now()
-
             entrega.save()
             return redirect('home')
     else:
@@ -168,7 +169,7 @@ def modoCiclista(request):
 def modoCiclistaPk(request,pk):
     ciclista = get_object_or_404(Ciclista, pk=pk)
     entregas = Entrega.objects.filter(ciclista = pk)
-    entregaatual = EntregaAtiva.objects.filter(ciclista = pk)
+    entregaatual = EntregaAtiva.objects.filter(ciclista = pk).first()
     print(entregas)
     print(entregaatual)
     return render(request,'home/modociclistapk.html', {'ciclista':ciclista, 'entregas':entregas, 'entregaatual':entregaatual})

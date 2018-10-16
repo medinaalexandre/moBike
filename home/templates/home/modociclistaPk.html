@@ -43,10 +43,14 @@
                      </div>
                      <div class="col-md-4">
                             <h4>Entrega atual</h4>
-                            {% if entregaatual.exists %}
-                                Com entrega
+                            {% if entregaatual != None %}
+                             <p>Endereço de Coleta:{{ entregaatual.end_coleta }}</p>
+                             <p>Endereço de Entrega: {{ entregaatual.end_entrega }}</p>
+                             <p>Horário do pedido: {{ entregaatual.data }}</p>
+                             <p>Horário </p>
+                             <p>Tempo estimado para entrega:</p>
                             {% else %}
-                                Sem entrega
+                                <h3>Sem entrega</h3>
                             {% endif %}
 
 

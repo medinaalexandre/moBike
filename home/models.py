@@ -73,5 +73,8 @@ class EntregaAtiva(models.Model):
 
         return directions
 
+    def __unicode__(self):
+        return u"%s" % self.your_field
+
     def __str__(self):
         return self.desc
