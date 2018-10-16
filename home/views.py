@@ -79,11 +79,22 @@ class EntregaAtivaDelegaView(UpdateView):
 def CompletaEntrega(request,pk):
 
     entrega = EntregaAtiva.objects.get(pk=pk)
-    print('TESTE')
-    print(entrega)
-    data = entrega.data_inicio
-    print(data)
+    # criando Entrega
+    entregaConcluida = Entrega()
+    # pegando os dados da EntregaAtiva
+    entregaConcluida.ciclista = entrega.ciclista
+    entregaConcluida.end_coleta = entrega.end_coleta
+    entregaConcluida.end_entrega = entrega.end_entrega
+    entregaConcluida.data = entrega.data
+    # salva no bd
+    entregaConcluida.save()
 
+    # deleta entregaAtiva
+    entrega.delete()
+
+
+
+    return render(request, 'home/entregas.html')
 
 
 def entregas(request):
