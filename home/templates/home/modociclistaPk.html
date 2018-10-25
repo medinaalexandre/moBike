@@ -22,7 +22,7 @@
          <div class="row">
           <div class="col-md-2 bg-light">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link active" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
+              <a class="nav-link active" href="{% url 'home' %}" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link" href="{% url 'entregas' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
               <a class="nav-link" href="{% url 'modociclista' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Modo Ciclista</a>
@@ -33,22 +33,25 @@
           </div>
              <div class="col-md-10">
                  <div class="row">
-                     <div class="col-md-12"><center><h3>Olá, {{ ciclista }}!</h3></center></div>
+                     <div class="col-md-12"><center><h1>Olá, {{ ciclista }}!</h1></center></div>
                  </div>
                  <div class="row">
+
                      <div class="col-md-2">
-                         <form>
+                     <!--    <form>
                              <input type = "button" onclick = "getLocationUpdate();" value = "Compartilhar Localização"/>
-                         </form>
+                         </form> -->
                      </div>
-                     <div class="col-md-4">
-                            <h4>Entrega atual</h4>
+                     <div class="modocic col-md-4">
+                        <h4><b>Entrega atual</b></h4>
                             {% if entregaatual != None %}
-                             <p>Endereço de Coleta:{{ entregaatual.end_coleta }}</p>
-                             <p>Endereço de Entrega: {{ entregaatual.end_entrega }}</p>
-                             <p>Horário do pedido: {{ entregaatual.data }}</p>
-                             <p>Horário </p>
-                             <p>Tempo estimado para entrega:</p>
+                            <ul>
+                                <li><b>Endereço de Coleta:</b> {{ entregaatual.end_coleta }}</li>
+                                <li><b>Endereço de Entrega:</b> {{ entregaatual.end_entrega }}</li>
+                                <li><b>Data do pedido:</b> {{ entregaatual.data|date:"d/m/Y" }}</li>
+                                <li><b>Horário:</b> {{ entregaatual.data|time:"H:i" }}</li>
+                                <li><b>Tempo estimado para entrega:</b> </li>
+                            </ul>
                             {% else %}
                                 <h3>Sem entrega</h3>
                             {% endif %}
@@ -56,8 +59,8 @@
 
 
                      </div>
-                     <div class="col-md-4">
-                         <h4>Histórico de entregas</h4>
+                     <div class="col-md-5">
+                         <h4><b>Histórico de entregas</b></h4>
                          <table>
                             <tr><th>Data</th>
                                 <th>Coleta</th>
