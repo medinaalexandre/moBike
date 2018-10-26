@@ -45,13 +45,6 @@
                      <div class="modocic col-md-4">
                         <h4><b>Entrega atual</b></h4>
                             {% if entregaatual != None %}
-<<<<<<< HEAD
-                             <p>Endereço de Coleta:{{ entregaatual.end_coleta }}</p>
-                             <p>Endereço de Entrega: {{ entregaatual.end_entrega }}</p>
-                             <p>Horário do pedido: {{ entregaatual.data }}</p>
-                             <p>Horário do </p>
-                             <p>Tempo estimado para entrega:</p>
-=======
                             <ul>
                                 <li><b>Endereço de Coleta:</b> {{ entregaatual.end_coleta }}</li>
                                 <li><b>Endereço de Entrega:</b> {{ entregaatual.end_entrega }}</li>
@@ -59,13 +52,9 @@
                                 <li><b>Horário:</b> {{ entregaatual.data|time:"H:i" }}</li>
                                 <li><b>Tempo estimado para entrega:</b> </li>
                             </ul>
->>>>>>> 41db50752271734db684004eab13eacddc6e18fc
                             {% else %}
                                 <h3>Sem entrega</h3>
                             {% endif %}
-
-
-
                      </div>
                      <div class="col-md-5">
                          <h4><b>Histórico de entregas</b></h4>
