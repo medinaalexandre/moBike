@@ -116,6 +116,8 @@ def home(request):
             entrega.lng_coleta = rota['routes'][0]['legs'][0]['start_location']['lng']
             entrega.lat_entrega = rota['routes'][0]['legs'][0]['end_location']['lat']
             entrega.lng_entrega = rota['routes'][0]['legs'][0]['end_location']['lng']
+            entrega.distancia = rota['routes'][0]['legs'][0]['distance']['text']
+            entrega.tempo_estimado = rota['routes'][0]['legs'][0]['duration']['text']
             if entrega.ciclista is None:
                 entrega.status = 'D'
             else:
@@ -125,7 +127,7 @@ def home(request):
             return redirect('home')
     else:
         form = EntregaAtivaForm()
-    return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
+    return render(request, 'home/userLocationMap.html', {'entregasAtivas': entregasAtivas, 'form': form})
 
 def entrega_detalhe(request,pk):
     entrega = get_object_or_404(EntregaAtiva,pk=pk)

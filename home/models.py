@@ -43,6 +43,8 @@ class EntregaAtiva(models.Model):
     end_coleta = models.CharField(max_length = 100)  #endereço escrito como usuario inseriu
     lat_coleta = models.FloatField(null = True)  # latitute, no formato da api
     lng_coleta = models.FloatField(null = True)  # longitude, no formato da api
+    distancia = models.TextField(null = True, max_length=100)
+    tempo_estimado = models.TextField(null = True, max_length=100)
     data_inicio = models.DateTimeField(blank = True, null = True)
     data_coleta = models.DateTimeField(blank = True, null = True)
     end_entrega = models.CharField(max_length = 100)
