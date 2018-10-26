@@ -49,7 +49,7 @@
                     <li class="list-group-item justify-content-between">
                         <b>{{c}}</b>
                         <a href="{% url 'deleta_ciclista' pk=c.id %}" class="aux btn badge-default">Excluir</a>
-                        <a href="#" class="aux btn badge-default">Editar</a>
+                        <a href="{% url 'editar_ciclista' pk=c.id%}" class="aux btn badge-default">Editar</a>
                   </li>
                     {% endfor %}
                 </ul>

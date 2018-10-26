@@ -78,8 +78,16 @@ class EntregaAtivaDelegaView(UpdateView):
     context_object_name = 'entregaativa'
     success_url = reverse_lazy("entregas")
 
-def CompletaEntrega(request,pk):
 
+class CiclistaEditarView(UpdateView):
+    template_name = "home/editarciclista.html"
+    model = Ciclista
+    fields = ('nome', 'status', )
+    context_object_name = 'ciclista'
+    success_url = reverse_lazy("ciclistas")
+
+
+def CompletaEntrega(request,pk):
     entrega = EntregaAtiva.objects.get(pk=pk)
     # criando Entrega
     entregaConcluida = Entrega()
