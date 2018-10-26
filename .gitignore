@@ -8,3 +8,4 @@ db.sqlite3
 .DS_Store
 .idea/workspace.xml
 
+home/templates/home/modociclista.html
