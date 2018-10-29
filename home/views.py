@@ -135,7 +135,7 @@ def home(request):
             return redirect('home')
     else:
         form = EntregaAtivaForm()
-    return render(request, 'home/userLocationMap.html', {'entregasAtivas': entregasAtivas, 'form': form})
+    return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
 
 def entrega_detalhe(request,pk):
     entrega = get_object_or_404(EntregaAtiva,pk=pk)

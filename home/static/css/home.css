@@ -79,6 +79,20 @@ textarea {
 	font-size: 17px;
 }
 
+.excluient {
+	padding: 30px;
+	font-size: 17px;
+	margin-left: 15px;
+}
+
+.excluient li {
+	padding-bottom: 5px;
+}
+
+.excluicic {
+	padding: 35px;
+}
+
 .cic {
 	margin-top: 3%;
 }
