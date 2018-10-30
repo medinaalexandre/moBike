@@ -14,6 +14,7 @@
         <script src="{% static 'material/js/jquery.js' %}"></script>
         {% include 'material/includes/material_js.html' %}
         <!-- bootstrap -->
+        <link rel="icon" href="{% static '/icon.ico' %}" />
     </head>
     <body>
         <div class="container-fluid">
@@ -23,7 +24,7 @@
               <a class="nav-link" href="{% url 'home' %}" role="tab" aria-controls="v-pills-home" aria-selected="true">Início</a>
               <a class="nav-link" href="{% url 'ciclistas' %}" role="tab" aria-controls="v-pills-ciclistas" aria-selected="false">Ciclistas</a>
               <a class="nav-link active" href="{% url 'entregas' %}" role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
-              <a class="nav-link" href="#" role="tab" aria-controls="v-pills-logout" aria-selected="false">Logout</a>
+              <a class="nav-link" href="{% url 'modociclista' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Modo Ciclista</a>
                 <br>
                 <b>Hora: {% tempo_atual %}</b>
             </div>
