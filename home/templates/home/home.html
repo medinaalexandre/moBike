@@ -54,6 +54,32 @@
                     <div id="map"></div>
                 </div>
          </div>
+<<<<<<< HEAD
+=======
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="col-md-5">
+      <form method="POST" content="charset=UTF-8">
+        <h1>Nova Entrega</h1>
+        {% csrf_token %}
+        {% form %}
+        {% part form.ciclista prefix %}<i class="material-icons prefix">account_box</i>{% endpart %}
+        {% part form.end_coleta prefix%}<i class="material-icons prefix">add_location</i>{% endpart %}
+        {% part form.end_entrega prefix %}<i class="material-icons prefix">place</i>{% endpart %}
+        {% part form.desc prefix %}<i class="material-icons prefix">chat</i>{% endpart %}
+        {% endform %}
+        <button type="submit" class="btn">Entregar</button>
+    </form>
+
+    <form>
+        <input type = "button" onclick = "getLocationUpdate();" value = "Watch Update"/>
+    </form>
+
+
+
+
+>>>>>>> 666c2cca8459a6b72ab5fa805072b977a234afea
 
 <script>
       $(function(){
