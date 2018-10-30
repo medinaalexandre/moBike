@@ -126,6 +126,7 @@ def home(request):
             entrega.lng_entrega = rota['routes'][0]['legs'][0]['end_location']['lng']
             entrega.distancia = rota['routes'][0]['legs'][0]['distance']['text']
             entrega.tempo_estimado = rota['routes'][0]['legs'][0]['duration']['text']
+            print(entrega.tempo_estimado)
             if entrega.ciclista is None:
                 entrega.status = 'D'
             else:

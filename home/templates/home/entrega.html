@@ -46,7 +46,7 @@
             <li><b>Endereço de entrega:</b> {{entrega.end_entrega}}</li>
             <li><b>Descrição de entrega:</b> {{entrega.desc}}</li>
             <li><b>Data de criação da entrega:</b> {{entrega.data|date:"d/m/Y"}}</li>
-            <li><b>Tempo de execução:</b> </li>
+            <li><b>Tempo de execução:</b> {{entrega.tempo_estimado}}</li>
          </ul>
          {% else %}
          <ul>
@@ -55,7 +55,7 @@
             <li><b>Endereço de entrega:</b> {{entrega.end_entrega}}</li>
             <li><b>Descrição de entrega:</b> {{entrega.desc}}</li>
             <li><b>Data de criação da entrega:</b> {{entrega.data|date:"d/m/Y"}}</li>
-            <li><b>Tempo de execução:</b> </li>
+            <li><b>Tempo de execução:</b> {{entrega.tempo_estimado}}</li>
          </ul>
          {% endif %}
      </div>
