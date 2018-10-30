@@ -14,6 +14,10 @@ td a {
 	color: inherit;
 } 
 
+li a {
+	color: inherit;
+}
+
 b {
     margin-top: 390px;
 }
