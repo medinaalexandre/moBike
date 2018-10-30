@@ -102,8 +102,15 @@ textarea {
 }
 
 #map {
-    height: 400px;
+    height: 75%;
     width: 100%;
     margin-top: 50px;
     margin-right: 50px;
+}
+
+#map-canvas {
+    height: 75%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
