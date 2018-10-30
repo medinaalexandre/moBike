@@ -2,6 +2,7 @@
 {% load tempo_atual %}
 
 {% block content %}
+<div>
     <form method="post">
         {% csrf_token %}
         <hr />
@@ -11,4 +12,24 @@
         <button class="btn-danger btn-outline-danger btn">Excluir</button>
         </div>
     </form>
+
+    {% if entregaativa.ciclista != None %}
+    <ul class="excluient">
+        <li><b>Data:</b> {{entregaativa.data|date:"d/m/Y"}}</li>
+        <li><b>Endereço de coleta:</b> {{entregaativa.end_coleta}}</li>
+        <li><b>Endereço de entrega:</b> {{entregaativa.end_entrega}}</li>
+        <li><b>Descrição:</b> {{entregaativa.desc}}</li>
+        <li><b>Ciclista:</b> {{entregaativa.ciclista}}</li>
+    </ul>
+    {% else %}
+    <ul class="excluient">
+        <li><b>Data:</b> {{entregaativa.data|date:"d/m/Y"}}</li>
+        <li><b>Endereço de coleta:</b> {{entregaativa.end_coleta}}</li>
+        <li><b>Endereço de entrega:</b> {{entregaativa.end_entrega}}</li>
+        <li><b>Descrição:</b> {{entregaativa.desc}}</li>
+    </ul>
+    {% endif %}
+
+</div>
+
 {% endblock %}

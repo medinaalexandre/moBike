@@ -2,6 +2,7 @@
 {% load tempo_atual %}
 
 {% block content %}
+<div>
     <form method="post">
         {% csrf_token %}
         <hr />
@@ -11,4 +12,8 @@
         <button class="btn-danger btn-outline-danger btn">Excluir</button>
         </div>
     </form>
+
+    <h4 class="excluicic"><b>Ciclista:</b> {{ciclista}}</h4>
+
+</div>
 {% endblock %}
