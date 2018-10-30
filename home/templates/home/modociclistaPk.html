@@ -15,7 +15,7 @@
         <script src="{% static 'material/js/jquery.js' %}"></script>
         {% include 'material/includes/material_js.html' %}
         <!-- bootstrap -->
-        <link rel="icon" href="{% static '/icon.ico' %}" />
+        <link rel="icon" href="{% static '/icon.png' %}" />
 </head>
 <body>
 
@@ -50,7 +50,8 @@
                                 <li><b>Endereço de Entrega:</b> {{ entregaatual.end_entrega }}</li>
                                 <li><b>Data do pedido:</b> {{ entregaatual.data|date:"d/m/Y" }}</li>
                                 <li><b>Horário:</b> {{ entregaatual.data|time:"H:i" }}</li>
-                                <li><b>Tempo estimado para entrega:</b></li>
+                                <li><b>Tempo estimado para entrega: </b>{{entregaatual.tempo_estimado}}</li>
+                                <li><b>Completar Entrega:</b><a href="{% url 'completa_entregaativa' pk=entregaatual.id %}" class="material-icons prefix">check_box</a></li>
                             </ul>
                             {% else %}
                                 <h3>Sem entrega</h3>
