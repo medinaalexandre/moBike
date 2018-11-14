@@ -157,6 +157,20 @@ def salvaXY(request):
         print('salvado')
         return HttpResponse('result')
 
+def completaEndereco(request):
+    if request.method == 'GET':
+        latLng = request.GET.get('endlatLng')
+        latLng = latLng.replace("(","")
+        latLng = latLng.replace(")", "")
+        latLng = latLng.replace(" ", "")
+        lat = float(latLng.split(',')[0])
+        lng = float(latLng.split(',')[1])
+
+        print(lat)
+        print(lng)
+
+
+        return HttpResponse('result')
 
 def ciclistas(request):
     ciclistas = Ciclista.objects.all()

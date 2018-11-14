@@ -12,6 +12,7 @@ urlpatterns = [
     path('userPos', views.userPos, name='userPos'),
     path('home/excluirCiclista/<pk>', views.CiclistaDeleteView.as_view(), name="deleta_ciclista"),
     path('home/xy', views.salvaXY, name="salvaXY"),
+    path('home/completaend', views.completaEndereco, name="completaEndereco"),
     path('home/entrega/<pk>', views.entrega_detalhe, name='entrega_detalhe'),
     path('home/editarciclista/<pk>', views.CiclistaEditarView.as_view(), name="editar_ciclista"),
     path('modociclista', views.modoCiclista, name='modociclista'),

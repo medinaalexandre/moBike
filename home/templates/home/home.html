@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/home.css' %}">
         {% include 'material/includes/material_css.html' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="{% static 'material/js/jquery.js' %}"></script>
         {% include 'material/includes/material_js.html' %}
         <!-- bootstrap -->
@@ -54,32 +55,6 @@
                     <div id="map"></div>
                 </div>
          </div>
-<script>
-      $(function(){
-
-        $("#geocomplete").geocomplete()
-          .bind("geocode:result", function(event, result){
-            $.log("Result: " + result.formatted_address);
-          })
-          .bind("geocode:error", function(event, status){
-            $.log("ERROR: " + status);
-          })
-          .bind("geocode:multiple", function(event, results){
-            $.log("Multiple: " + results.length + " results found");
-          });
-
-        $("#find").click(function(){
-          $("#geocomplete").trigger("geocode");
-        });
-
-
-        $("#examples a").click(function(){
-          $("#geocomplete").val($(this).text()).trigger("geocode");
-          return false;
-        });
-
-      });
-    </script>
 
 <script>
 
@@ -98,8 +73,29 @@
     map = new google.maps.Map(document.getElementById('map'),options);
 
     directionsDisplay.setMap(map);
+    map.addListener('click', function(e){
+        completaEnd(e.latLng.toString());
+    });
+
 
   }
+
+
+    function completaEnd(latLng) {
+            $.ajax({
+                url: '{% url 'completaEndereco' %}',
+                data: {
+                  'endlatLng':latLng
+                },
+                dataType: 'json',
+                success: function (data) {
+                  if (data.is_taken) {
+                    console.log("O usuário não saiu do lugar");
+                  }
+                }
+              });
+     }
+
 
   function carregaTodosMarkers(){
 
@@ -175,7 +171,6 @@
  </script>
 
  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDmhhr_81wgfC0l_80i4nMxiDyZmlxwgI&callback=initMap"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
