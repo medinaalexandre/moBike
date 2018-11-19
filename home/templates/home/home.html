@@ -84,15 +84,19 @@
 
     function completaEnd(latLng,geocoder) {
               console.log(latLng);
-              var latlngStr = latLng.split(',', 2);
-              console.log("latlngStr:"+latlngStr);
+
+              var latlngStr = latLng.substring(1, latLng.indexOf(')'));
+              console.log(latlngStr);
+              latlngStr = latlngStr.split(',', 2);
+              console.log("latlngStr:"+latlngStr[0]+" " +latlngStr[1]);
               var latlngSep = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
               console.log(latlngSep);
               geocoder.geocode({'location': latlngSep}, function(results,status){
                 console.log(status);
                 console.log(results[0]);
+                console.log(results[0].formatted_address);
                 if(status === 'OK'){
-                    $('#id_end_coleta').val(results[0].formatted_adress);
+                    $('#id_end_coleta').val(results[0].formatted_address);
                 }
                 else{
                     $('#id_end_coleta').val(latLng);
