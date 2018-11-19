@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import EntregaAtiva, Ciclista, Entrega, UserGeoLocation
-from .forms import EntregaAtivaForm, CiclistaForm, ModoCiclistaForm
-from django.shortcuts import redirect
+from .forms import EntregaAtivaForm, CiclistaForm, ModoCiclistaForm, EntregaAtivaEndForm
+from django.shortcuts import redirect,render_to_response
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from datetime import datetime
@@ -136,6 +136,7 @@ def home(request):
             return redirect('home')
     else:
         form = EntregaAtivaForm()
+        form.fields['end_coleta'].initial = ''
     return render(request, 'home/home.html', {'entregasAtivas': entregasAtivas, 'form': form})
 
 def entrega_detalhe(request,pk):
@@ -155,21 +156,6 @@ def salvaXY(request):
         u.longitude = longitude
         u.save()
         print('salvado')
-        return HttpResponse('result')
-
-def completaEndereco(request):
-    if request.method == 'GET':
-        latLng = request.GET.get('endlatLng')
-        latLng = latLng.replace("(","")
-        latLng = latLng.replace(")", "")
-        latLng = latLng.replace(" ", "")
-        lat = float(latLng.split(',')[0])
-        lng = float(latLng.split(',')[1])
-
-        print(lat)
-        print(lng)
-
-
         return HttpResponse('result')
 
 def ciclistas(request):

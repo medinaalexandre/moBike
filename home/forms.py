@@ -7,6 +7,13 @@ class EntregaAtivaForm(forms.ModelForm):
         fields = ('ciclista', 'end_coleta', 'end_entrega', 'desc',)
         labels = {'ciclista':'Ciclista', 'end_coleta':'Endereço de coleta', 'end_entrega':'Endereço de entrega', 'desc':'Descrição'}
 
+class EntregaAtivaEndForm(forms.ModelForm):
+    class Meta:
+        model = EntregaAtiva
+        EntregaAtiva.end_entrega = "Teste"
+        fields = ('ciclista', 'end_coleta', 'end_entrega', 'desc',)
+        labels = {'ciclista':'Ciclista', 'end_coleta':'Endereço de coleta', 'end_entrega':'Endereço de entrega', 'desc':'Descrição'}
+
 class CiclistaForm(forms.ModelForm):
     class Meta:
         model = Ciclista
