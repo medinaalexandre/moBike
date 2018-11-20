@@ -64,9 +64,21 @@ textarea {
 	resize: none;
 }
 
+.material-icons:hover {
+	color: black;
+}
+
 .aux {
 	margin-right: 7px;
 	float: right;
+}
+
+.aux:hover {
+	color: inherit;
+}
+
+.aux2:hover {
+	color: inherit;
 }
 
 .detalheEntrega {
@@ -117,4 +129,41 @@ textarea {
     width: 100%;
     margin: 0px;
     padding: 0px;
+}
+
+.desktop {
+  visibility: visible;
+}
+
+.mobile {
+  visibility: hidden;
+}
+
+@media(max-width: 700px) {
+
+  .desktop {
+    visibility: hidden;
+  }
+
+  .mobile {
+	visibility: visible;
+	height: 250px !important;
+	width: 240px;
+	margin-left: 20%;
+  }
+
+  .mobile a {
+  	margin-top: 115px;
+  }
+}
+
+@media(max-width: 775px) {	
+  .menu {
+  	height: 230px;
+  	margin-bottom: 15px;
+  }
+
+  .hora {
+  	visibility: hidden;
+  }
 }
