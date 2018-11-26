@@ -117,6 +117,14 @@ textarea {
     text-align: center;
 }
 
+.hora {
+    margin-top: 400px;
+}
+
+.modal {
+    background: none !important;
+}
+
 #map {
     height: 75%;
     width: 100%;
