@@ -27,7 +27,10 @@
             <a class="nav-link" href="{% url 'entregas' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Entregas</a>
             <a class="nav-link" href="{% url 'modociclista' %}"  role="tab" aria-controls="v-pills-entregas" aria-selected="false">Modo Ciclista</a>
             <br>
-            <b class="hora">Hora: {% tempo_atual %}</b>
+            <b class="hora"<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>>Hora: {% tempo_atual %}</b>
         </div>
     </div>
     <div class="row"></div>

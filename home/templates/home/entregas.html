@@ -47,9 +47,9 @@
                         <td>{{ed.end_coleta}}</td>
                         <td>{{ed.end_entrega}}</td>
                         <td>{{ed.desc}}</td>
-                        <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" class="material-icons prefix">directions_bike</a><br>
-                            <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="material-icons prefix">delete</a>
-                            <a href="{% url 'entrega_detalhe' pk=ed.id %}" class="material-icons prefix">visibility</a></td>
+                        <td><a href="{% url 'delega_entregaativa' pk=ed.id %}" title="Delegar Entrega" class="material-icons prefix">directions_bike</a><br>
+                            <a href="{% url 'deleta_entregaativa' pk=ed.id %}" title="Excluir Entrega" class="material-icons prefix">delete</a>
+                            <a href="{% url 'entrega_detalhe' pk=ed.id %}" title="Ver Detalhes" class="material-icons prefix">visibility</a></td>
                     </tr>
                     {% endfor %}
                   </tbody>
@@ -68,9 +68,9 @@
                                 <td>{{ed.end_coleta}}</td>
                                 <td>{{ed.end_entrega}}</td>
                                 <td>{{ed.ciclista}}</td>
-                                <td><a href="{% url 'completa_entregaativa' pk=ed.id %}" class="material-icons prefix">check_box</a>
-                                    <a href="{% url 'deleta_entregaativa' pk=ed.id %}" class="material-icons prefix">delete</a>
-                                    <a href="{% url 'entrega_detalhe' pk=ed.id %}" class="material-icons prefix">visibility</a></td>
+                                <td><a href="{% url 'completa_entregaativa' pk=ed.id %}" title="Finalizar Entrega" onclick="myFunction()" class="material-icons prefix">check_box</a>
+                                    <a href="{% url 'deleta_entregaativa' pk=ed.id %}" title="Deletar Entrega" class="material-icons prefix">delete</a>
+                                    <a href="{% url 'entrega_detalhe' pk=ed.id %}" title="Ver Detalhes" class="material-icons prefix">visibility</a></td>
                             </tr>
                         {% endfor %}
                   </table>
@@ -96,6 +96,13 @@
 
         </div>
          </div>
+
+
+<script>
+function myFunction() {
+    alert("Entrega finalizada!");
+}
+</script>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
