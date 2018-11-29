@@ -67,6 +67,17 @@ function modal() {
   var map;
   var ativa = 0;
   var markers = [];
+  var input = 1;
+
+  $("#id_end_coleta").click(function(){
+    input = 1;
+    console.log(input);
+  });
+
+  $("#id_end_entrega").click(function(){
+    input = 2;
+    console.log(input);
+  });
 
   function initMap(){
     var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -103,7 +114,11 @@ function modal() {
                 console.log(results[0]);
                 console.log(results[0].formatted_address);
                 if(status === 'OK'){
-                    $('#id_end_coleta').val(results[0].formatted_address);
+                    if(input === 1){
+                        $('#id_end_coleta').val(results[0].formatted_address);
+                    }else if(input === 2){
+                       $('#id_end_entrega').val(results[0].formatted_address);
+                    }
                 }
 
               });
