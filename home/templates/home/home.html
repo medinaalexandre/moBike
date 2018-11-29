@@ -72,12 +72,16 @@ function modal() {
   $("#id_end_coleta").click(function(){
     input = 1;
     console.log(input);
+    mostraGif();
   });
 
   $("#id_end_entrega").click(function(){
     input = 2;
     console.log(input);
+    mostraGif();
   });
+
+
 
   function initMap(){
     var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -99,6 +103,11 @@ function modal() {
 
   }
 
+
+    function mostraGif(){
+        $("#preload").show(1000);
+        setTimeout('$("#preload").fadeOut(100)', 5000);
+    }
 
     function completaEnd(latLng,geocoder) {
               console.log(latLng);
